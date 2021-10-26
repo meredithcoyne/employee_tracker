@@ -23,77 +23,118 @@ function loadMainPrompts() {
         type: "list",
         name: "choice",
         message: "What would you like to do?",
-        choices: [
-            {
-                name:"View All Employees",
+        choices: [{
+                name: "View All Employees",
                 value: "VIEW_EMPLOYEES"
             },
             {
-                name:"View All Employees by Department",
+                name: "View All Employees by Department",
                 value: "VIEW_EMPLOYEES_BY_DEPARTMENT"
             },
             {
-                name:"View All Employees by Manager",
+                name: "View All Employees by Manager",
                 value: "VIEW_EMPLOYEES_BY_MANAGER"
             },
             {
-                name:"Add Employee",
+                name: "Add Employee",
                 value: "ADD_EMPLOYEE"
             },
             {
-                name:"Remove Employee",
+                name: "Remove Employee",
                 value: "REMOVE_EMPLOYEE"
             },
             {
-                name:"Update Employee Role",
+                name: "Update Employee Role",
                 value: "UPDATE_EMPLOYEE_ROLE"
             },
             {
-                name:"Update Employee Manager",
+                name: "Update Employee Manager",
                 value: "UPDATE_EMPLOYEE_MANAGER"
             },
             {
-                name:"View All Roles",
+                name: "View All Roles",
                 value: "VIEW_ROLES"
             },
             {
-                name:"Add Role",
+                name: "Add Role",
                 value: "ADD_ROLE"
             },
             {
-                name:"Remove Role",
+                name: "Remove Role",
                 value: "REMOVE_ROLE"
             },
             {
-                name:"View All Department",
+                name: "View All Department",
                 value: "VIEW_DEPARTMENTS"
             },
             {
-                name:"Add Department",
-                value: "ADD_DEPARTMENT"            
+                name: "Add Department",
+                value: "ADD_DEPARTMENT"
             },
             {
-                name:"Remove Department",
-                value: "REMOVE_DEPARTMENT"            
+                name: "Remove Department",
+                value: "REMOVE_DEPARTMENT"
             },
             {
-                name:"View Total Utilized Budget by Department",
-                value: "VIEW_UTILIZED_BUDGET_BY_DEPARTMENT"            
+                name: "View Total Utilized Budget by Department",
+                value: "VIEW_UTILIZED_BUDGET_BY_DEPARTMENT"
             },
             {
-                name:"Quit",
-                value: "QUIT"            
+                name: "Quit",
+                value: "QUIT"
             },
         ]
+    }]).THEN(RES => {
+            LET CHOICE = RES.CHOICE;
+            //call the appropriate function depending on what the user chose
+            switch (choice) {
+                case "VIEW_EMPLOYEES":
+                    viewEmployees();
+                    break;
+                case "VIEW_EMPLOYEES_BY_DEPARTMENT":
+                    viewEmployeeDepartment();
+                    break;
+                case "VIEW_EMPLOYEES_BY_MANAGER":
+                    viewEmployeeManager();
+                    break;
+                case "ADD_EMPLOYEE":
+                    addEmployee();
+                    break;
+                case "REMOVE_EMPLOYEE":
+                    removeEmployee();
+                    break;
+                case "UPDATE_EMPLOYEE_ROLE":
+                    updateEmployeeRole();
+                    break;
+                case "VIEW_ROLES":
+                    viewRoles();
+                    break;
+                case "ADD_ROLE":
+                    addRole();
+                    break;
+                case "REMOVE_ROLE":
+                    removeRole();
+                    break;
+                case "VIEW_DEPARTMENTS":
+                    viewDepartment();
+                    break;
+                case "ADD_DEPARTMENT":
+                    addDepartment();
+                    break;
+                case "REMOVE_DEPARTMENT":
+                    removeDepartment();
+                    break;
+                case "VIEW_UTILIZED_BUDGET_BY_DEPARTMENT":
+                    viewUtilizedBudget();
+                    break;
+                case "QUIT":
+                    quit();
+                    break;
+            
+            }
+        }
     }
-]).THEN(RES => {
-    LET CHOICE = RES.CHOICE;
-    //call the appropriate function depending on what the user chose
-    switch (choice){
-        case "VIEW_EMPLOYEES": 
-        viewEmployees();
-        break;
-        
-    }
+
+}
 })
 }
