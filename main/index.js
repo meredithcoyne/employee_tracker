@@ -1,6 +1,5 @@
 const inquirer = require("inquirer");
 const mysql = require("mysql");
-const db = require("./db");
 require("console.table");
 
 init();
@@ -11,6 +10,21 @@ figlet('Employee \n \n Manager', function (err, data) {
     if (err) throw err;
     console.log(data);
 })
+
+//create the connection for database
+const connection = mysql.createConnection({
+  host: "localhost",
+  port: 3306,
+  user: "root",
+  password: "#73899thaveN",
+  database: "employee_db"
+});
+
+connection.connect(err => {
+  if (err) throw err;
+  console.log('connection established!');
+  start();
+});
 
 // questions prompting user to answer
 function start() {
