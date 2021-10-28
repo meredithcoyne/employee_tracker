@@ -12,6 +12,7 @@ figlet('Employee \n \n Manager', function (err, data) {
     console.log(data);
 })
 
+// questions prompting user to answer
 function start() {
     inquirer.prompt({
         name: "action",
@@ -92,5 +93,65 @@ function start() {
                 connection.end();
                 break;
         }
+    });
+}
+
+// function to View all departments,
+function viewDepartment() {
+    connection.query("SELECT * FROM department", (err, data) => {
+        if (err) throw err;
+        console.log("Viewing All Departments:");
+        console.table(data);
+        start();
+    });
+}
+
+// function to View all roles
+function viewRoles() {
+    connection.query("SELECT * FROM role", (err, data) => {
+        if (err) throw err;
+        console.log("Viewing All Roles:");
+        console.table(data);
+        start();
+    });
+}
+
+// function to View all employees
+function viewEmployees() {
+    connection.query("SELECT * FROM employee", (err, data) => {
+        if (err) throw err;
+        console.log("Viewing All employees:");
+        console.table(data);
+        start();
+    });
+}
+
+// function to Add a department
+function addDepartment() {
+    inquirer.prompt([
+        {
+            name: "department",
+            type: "input",
+            message: "What is the new department name?",
+            validate: (value) => {
+                if (value) {
+                    return true;
+                } else {
+                    console.log("Please enter department name.");
+                }
+            }
+        },
+    ]).then(answer => {
+        connection.query(
+            "Insert into department set?",
+            {
+                name: answer.department
+            },
+            (err) => {
+                if (err) throw err;
+                console.log(`New department ${answer.department} has been added!`);
+                start();
+            }
+        );
     });
 }

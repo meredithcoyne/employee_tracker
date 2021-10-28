@@ -3,6 +3,11 @@
   "version": "1.0.0",
   "description": "A command line application Content Management Systems (CMS) for managing a company's employees. Gives the ability to view and manage the departments, roles, and employees.",
   "main": "index.js",
+  "dependencies": {
+    "figlet": "^1.5.2",
+    "inquirer": "^8.2.0"
+  },
+  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -16,8 +21,5 @@
   "bugs": {
     "url": "https://github.com/meredithcoyne/employee_tracker/issues"
   },
-  "homepage": "https://github.com/meredithcoyne/employee_tracker#readme",
-  "dependencies": {
-    "inquirer": "^8.2.0"
-  }
+  "homepage": "https://github.com/meredithcoyne/employee_tracker#readme"
 }
