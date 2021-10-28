@@ -34,7 +34,8 @@ A command line application Content Management Systems for managing a company's e
 * JavaScript
 * Node.js
 * MySQL
-* npm packages
-  * inquirer
-  * figlet
-  * mysql
+* npm packages to install
+  * init -y
+  * install inquirer
+  * install figlet
+  * install mysql
